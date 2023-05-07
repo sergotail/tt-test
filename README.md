@@ -1,6 +1,9 @@
 # App local deployment
 
-After initial local setup and running, the project will be accessible at <http://localhost>
+This test app contains simple form for user regiser and login. Also it contains profile page for authorized users.
+Instructions below assuming that project will be installed on machine with any Linux distribution. Also it requires Docker to be installed.
+
+After initial local setup and running, the project will be accessible at <http://localhost>.
 
 ## Initial local setup
 

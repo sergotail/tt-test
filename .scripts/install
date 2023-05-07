@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo "Check for Docker..."
+docker --version
+
+if [ $# -gt 0 ]; then
+    echo "Please install Docker first, for instructions https://docs.docker.com/engine/"
+    return 200
+else
+    echo "Docker is installed, we continue..."
+fi
+
+echo "Executing Composer \"install\" command"
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+
+echo "Copy default environment configuration"
+cp "$(pwd)"/.env.example.dev "$(pwd)"/.env
+
+echo "Congratulations! Installation complete."
